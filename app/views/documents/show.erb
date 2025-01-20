@@ -1,0 +1,27 @@
+<div class="ml-10">
+  <h1 class="text-2xl mb-5">Détails du document</h1>
+
+  <% if @document %>
+  <p><strong>Nom :</strong> <%= @document.name %></p>
+  <p><strong>Chemin :</strong> <%= @document.path %></p>
+  <p><strong>Taille :</strong> <%= @document.size %> Mo</p>
+  <p><strong>Type :</strong> <%= @document.type %></p>
+  <p>
+    <strong>Nombre de téléchargements :</strong> 
+    <p>Cette semaine : <%=
+      week = Date.today.cweek
+      @document.downloads["week_#{week}"] ? @document.downloads["week_#{week}"] : "Aucun téléchargement"
+    %></p>
+    <p>Au total : <%= 
+      @document.downloads.values.sum != 0 ? @document.downloads.values.sum : "Aucun téléchargement"
+    %></p>
+  </p>
+  <p><strong>Date de création :</strong> <%= @document.created_at %></p>
+  <p><strong>Date de mise à jour :</strong> <%= @document.updated_at %></p>
+  <p><strong>Date de l'upload :</strong> <%= @document.uploaded_at %></p>
+  <% else %>
+  <p>Document introuvable.</p>
+  <% end %>
+  <div class="mt-5"></div>
+  <a href="/" class="p-2 bg-blue-500 rounded-md text-white">Retour à la liste des documents</a>
+</div>

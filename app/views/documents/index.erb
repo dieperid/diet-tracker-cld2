@@ -1,0 +1,52 @@
+<div class="ml-10">
+  <h1 class="text-2xl mb-5">Gestionnaire fichier</h1>
+
+  <h3 class="text-lg mb-2">Liste des documents</h3>
+
+  <p>Fichiers uploadés cette semaine : <%=
+    count_week = 0
+    week = Date.today.cweek
+
+    @documents.each do |document|
+    count_week += 1 if Date.parse(document.uploaded_at).cweek == week
+    end
+
+    count_week
+  %></p>
+
+  <form
+    action="/documents/actions"
+    method="post"
+    enctype="multipart/form-data"
+  >
+    <table class="mb-5">
+      <thead>
+        <tr>
+          <th>Sélectionner</th>
+          <th>Nom</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @documents.each do |document| %>
+        <tr>
+          <td>
+            <input
+              type="checkbox"
+              name="document_ids[]"
+              value="<%= document.id %>"
+            />
+          </td>
+          <td>
+            <a href="/documents/<%= document.id %>"><%= document.name %></a>
+            <!-- <%= document.name %> -->
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <button type="submit" name="action" value="download" class="p-2 bg-blue-500 text-white rounded-md">Télécharger</button>
+    <button type="submit" name="action" value="delete" class="p-2 bg-red-500 text-white rounded-md mb-5">Supprimer</button>
+  </form>
+
+  <a href="/documents/create" class="p-2 bg-blue-500 rounded-md text-white">Upload un fichier</a>
+</div>
