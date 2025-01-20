@@ -1,0 +1,35 @@
+<h1>Entrées de poids</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Poids (kg)</th>
+      <th>Date</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @weights.each do |weight| %>
+    <tr>
+      <td><%= weight.id %></td>
+      <td><%= weight.weight %></td>
+      <td><%= weight.date %></td>
+      <td>
+        <a href="/weights/<%= weight.id %>">Voir</a> |
+        <a href="/weights/<%= weight.id %>/edit">Modifier</a> |
+        <form
+          action="/weights/<%= weight.id %>"
+          method="post"
+          style="display: inline"
+        >
+          <input type="hidden" name="_method" value="delete" />
+          <button type="submit">Supprimer</button>
+        </form>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<a href="/weights/new">Ajouter une nouvelle entrée</a>

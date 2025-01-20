@@ -1,0 +1,12 @@
+<h1>Détails de l'entrée de poids</h1>
+
+<p><strong>ID :</strong> <%= @weight.id %></p>
+<p><strong>Poids :</strong> <%= @weight.weight %> kg</p>
+<p><strong>Date :</strong> <%= @weight.date %></p>
+
+<a href="/weights">Retour à la liste</a> |
+<a href="/weights/<%= @weight.id %>/edit">Modifier</a> |
+<form action="/weights/<%= @weight.id %>" method="post" style="display: inline">
+  <input type="hidden" name="_method" value="delete" />
+  <button type="submit">Supprimer</button>
+</form>

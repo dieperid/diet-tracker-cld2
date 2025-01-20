@@ -3,8 +3,12 @@
 # User class definition
 class User < ActiveRecord::Base
   has_secure_password
-  has_many :documents, class_name: 'Document', foreign_key: 'user_id'
 
+  # Relations
+  has_many :weights, dependent: :destroy
+  has_many :food_entries, dependent: :destroy
+
+  # Validations
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true
 end

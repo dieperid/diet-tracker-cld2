@@ -1,0 +1,29 @@
+<h1>Modifier une entrée de poids</h1>
+
+<% if @weight.errors.any? %>
+<ul>
+  <% @weight.errors.full_messages.each do |msg| %>
+  <li style="color: red"><%= msg %></li>
+  <% end %>
+</ul>
+<% end %>
+
+<form action="/weights/<%= @weight.id %>" method="post">
+  <input type="hidden" name="_method" value="put" />
+
+  <label for="weight">Poids (kg) :</label>
+  <input
+    type="number"
+    name="weight[weight]"
+    step="0.1"
+    value="<%= @weight.weight %>"
+    required
+  />
+
+  <label for="date">Date :</label>
+  <input type="date" name="weight[date]" value="<%= @weight.date %>" required />
+
+  <button type="submit">Mettre à jour</button>
+</form>
+
+<a href="/weights">Annuler</a>

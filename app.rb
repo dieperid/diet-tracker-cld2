@@ -15,6 +15,7 @@ require "#{CONFIG_FOLDER}/logger"
 require "#{SERVICE_FOLDER}/db_connection"
 
 set :environment, ENV.fetch('RACK_ENV') || 'development'
+use Rack::Session::Cookie, key: 'rack.session', path: '/', secret: ENV['SESSION_SECRET']
 set :views, File.join(VIEWS_FOLDER)
 set :logger, $logger
 
