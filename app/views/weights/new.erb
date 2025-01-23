@@ -1,21 +1,12 @@
-<h1>Ajouter une nouvelle entrée de poids</h1>
+<h1 class="text-2xl font-semibold text-gray-800 mb-4">
+  Ajouter une entrée de poids
+</h1>
 
-<% if @weight&.errors&.any? %>
-<ul>
-  <% @weight.errors.full_messages.each do |msg| %>
-  <li style="color: red"><%= msg %></li>
-  <% end %>
-</ul>
+<% if @error %>
+<p style="color: red"><%= @error %></p>
 <% end %>
 
 <form action="/weights" method="post">
-  <label for="weight">Poids (kg) :</label>
-  <input type="number" name="weight[weight]" step="0.1" required />
-
-  <label for="date">Date :</label>
-  <input type="date" name="weight[date]" required />
-
-  <button type="submit">Créer</button>
+  <%= erb :'weights/_form', locals: { weight_value: '', date_value: '',
+  button_text: 'Créer' } %>
 </form>
-
-<a href="/weights">Annuler</a>

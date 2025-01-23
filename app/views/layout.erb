@@ -8,17 +8,32 @@
   </head>
   <body class="bg-gray-100">
     <div class="w-full bg-white py-2 shadow-md">
-      <div class="w-3/4 mx-auto flex">
-        <h1>Diet Tracker - CLD2</h1>
+      <div class="max-w-7xl mx-auto flex justify-between sm:px-6 lg:px-8">
+        <div class="flex items-center">
+          <div class="flex">
+            <h1>Diet Tracker - CLD2</h1>
+          </div>
+          <% if session[:user_id] %>
+          <div class="flex sm:ms-10">
+            <div class="flex">
+              <a href="/">Accueil</a>
+            </div>
+          </div>
+          <% end %>
+        </div>
 
         <% if session[:user_id] %>
-        <div class="links flex ml-52">
-          <a href="/">Accueil</a>
+        <div class="flex items-center">
+          <div class="flex ml-4">
+            <a href="/logout">Logout</a>
+          </div>
         </div>
         <% end %>
       </div>
     </div>
 
-    <div class="content"><%= yield %></div>
+    <div class="content py-6 max-w-7xl mx-auto sm:px-6 lg:px-8">
+      <%= yield %>
+    </div>
   </body>
 </html>
