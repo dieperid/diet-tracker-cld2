@@ -8,18 +8,17 @@ MIDDLEWARES_FOLDER = './app/middlewares' unless defined?(MIDDLEWARES_FOLDER)
 CONFIG_FOLDER = './config' unless defined?(CONFIG_FOLDER)
 
 require 'sinatra'
-require 'pdf-reader'
-require 'sinatra/activerecord'
 require 'dotenv/load'
-require "#{CONFIG_FOLDER}/logger"
+require 'securerandom'
+require './app/helpers/auth_helper'
 require "#{SERVICE_FOLDER}/db_connection"
 
-set :environment, ENV.fetch('RACK_ENV') || 'development'
-use Rack::Session::Cookie, key: 'rack.session', path: '/', secret: ENV['SESSION_SECRET']
+set :environment, ENV.fetch('RACK_ENV')
+set :session_secret, ENV.fetch('SESSION_SECRET') { SecureRandom.hex(64) }
 set :views, File.join(VIEWS_FOLDER)
-set :logger, $logger
 
 DBConnection.instance
+helpers AuthHelper
 
 Dir[File.join(CONTROLLERS_FOLDER, '*.rb')].sort.each { |file| require file }
 Dir[File.join(MODELS_FOLDER, '*.rb')].sort.each { |file| require file }
@@ -29,8 +28,4 @@ configure do
   enable :sessions
 end
 
-# use Auth
-
-get '/' do
-  'Hello World'
-end
+use Auth
