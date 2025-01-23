@@ -1,31 +1,44 @@
 require 'sinatra'
-require 'sinatra/activerecord'
+require './app'
+
+get '/' do
+  redirect '/weights'
+end
 
 # Index
 get '/weights' do
-  @weights = Weight.all
-  erb :'weights/index'
+  if logged_in?(session)
+    @weights = current_user(session).weights.order(date: :asc)
+    erb :'weights/index'
+  else
+    redirect '/login'
+  end
+end
+
+# Create
+get '/weights/new' do
+  @weight = Weight.new
+  erb :'weights/new'
+end
+
+# Store
+post '/weights' do
+  weight = current_user(session).weights.new(
+    params
+  )
+
+  if weight.save
+    redirect '/weights'
+  else
+    @error = "Erreur lors de l'enregistrement du poids."
+    erb :'weights/new'
+  end
 end
 
 # Show
 get '/weights/:id' do
   @weight = Weight.find(params[:id])
   erb :'weights/show'
-end
-
-# Create
-get '/weights/new' do
-  erb :'weights/new'
-end
-
-# Store
-post '/weights' do
-  @weight = Weight.new(params[:weight])
-  if @weight.save
-    redirect '/weights'
-  else
-    erb :'weights/new'
-  end
 end
 
 # Edit
