@@ -10,36 +10,48 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_01_20_084432) do
-  create_table "food_entries", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.string "name", null: false
-    t.float "calories", null: false
-    t.float "quantity", null: false
-    t.date "date", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_food_entries_on_user_id"
+ActiveRecord::Schema[7.2].define(version: 20_250_127_081_938) do
+  create_table 'consumptions', charset: 'utf8mb4', collation: 'utf8mb4_general_ci', force: :cascade do |t|
+    t.bigint 'user_id', null: false
+    t.bigint 'food_entries_id', null: false
+    t.date 'consumption_date', null: false
+    t.float 'quantity', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['food_entries_id'], name: 'index_consumptions_on_food_entries_id'
+    t.index ['user_id'], name: 'index_consumptions_on_user_id'
   end
 
-  create_table "users", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "email", null: false
-    t.string "password_digest", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
+  create_table 'food_entries', charset: 'utf8mb4', collation: 'utf8mb4_general_ci', force: :cascade do |t|
+    t.bigint 'user_id', null: false
+    t.string 'name', null: false
+    t.float 'calories', null: false
+    t.date 'date', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['user_id'], name: 'index_food_entries_on_user_id'
   end
 
-  create_table "weights", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.float "weight", null: false
-    t.date "date", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_weights_on_user_id"
+  create_table 'users', charset: 'utf8mb4', collation: 'utf8mb4_general_ci', force: :cascade do |t|
+    t.string 'name', null: false
+    t.string 'email', null: false
+    t.string 'password_digest', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['email'], name: 'index_users_on_email', unique: true
   end
 
-  add_foreign_key "food_entries", "users"
-  add_foreign_key "weights", "users"
+  create_table 'weights', charset: 'utf8mb4', collation: 'utf8mb4_general_ci', force: :cascade do |t|
+    t.bigint 'user_id', null: false
+    t.float 'weight', null: false
+    t.date 'date', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['user_id'], name: 'index_weights_on_user_id'
+  end
+
+  add_foreign_key 'consumptions', 'food_entries', column: 'food_entries_id'
+  add_foreign_key 'consumptions', 'users'
+  add_foreign_key 'food_entries', 'users'
+  add_foreign_key 'weights', 'users'
 end
