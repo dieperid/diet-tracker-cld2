@@ -1,0 +1,19 @@
+<h1>
+  Détails de l'aliment</h1>
+
+  <p><strong>ID :</strong> <%= @food_entry.id %></p>
+  <p><strong>Nom :</strong> <%= @food_entry.name %></p>
+  <p><strong>Calories :</strong> <%= @food_entry.calories %> kcal</p>
+  <p><strong>Date :</strong> <%= @food_entry.date %></p>
+
+  <a href="/food_entries">Retour à la liste</a> |
+  <a href="/food_entries/<%= @food_entry.id %>/edit">Modifier</a> |
+  <form
+    action="/food_entries/<%= @food_entry.id %>"
+    method="post"
+    style="display: inline"
+  >
+    <input type="hidden" name="_method" value="delete" />
+    <button type="submit">Supprimer</button>
+  </form>
+</h1>

@@ -1,0 +1,57 @@
+<div class="space-y-2">
+  <section>
+    <label for="name" class="block text-gray-700 font-medium">Nom :</label>
+    <input
+      type="text"
+      name="food_entry[name]"
+      id="name"
+      step="0.1"
+      value="<%= name_value %>"
+      required
+      class="w-80 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+    />
+  </section>
+
+  <section>
+    <label for="calories" class="block text-gray-700 font-medium"
+      >Nombre de calories :</label
+    >
+    <input
+      type="number"
+      name="food_entry[calories]"
+      id="calories"
+      step="0.1"
+      value="<%= calories_value %>"
+      required
+      class="w-80 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+    />
+  </section>
+
+  <section>
+    <label for="date" class="block text-gray-700 font-medium">Date :</label>
+    <input
+      type="date"
+      name="food_entry[date]"
+      id="date"
+      value="<%= date_value %>"
+      required
+      class="w-80 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+    />
+  </section>
+</div>
+
+<div class="flex mt-4 space-x-4">
+  <button
+    type="submit"
+    class="px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+  >
+    <%= button_text %>
+  </button>
+
+  <a
+    href="/food_entries"
+    class="px-4 py-2 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500"
+  >
+    Annuler
+  </a>
+</div>

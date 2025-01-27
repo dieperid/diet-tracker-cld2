@@ -1,0 +1,10 @@
+<h1 class="text-2xl font-semibold text-gray-800 mb-4">Ajouter un aliment</h1>
+
+<% if @error %>
+<p style="color: red"><%= @error %></p>
+<% end %>
+
+<form action="/food_entries" method="post">
+  <%= erb :'food_entries/_form', locals: { name_value: '', calories_value: 0,
+  date_value: '', button_text: 'Créer' } %>
+</form>
