@@ -13,12 +13,12 @@
 ActiveRecord::Schema[7.2].define(version: 20_250_127_081_938) do
   create_table 'consumptions', charset: 'utf8mb4', collation: 'utf8mb4_general_ci', force: :cascade do |t|
     t.bigint 'user_id', null: false
-    t.bigint 'food_entries_id', null: false
+    t.bigint 'food_entry_id', null: false
     t.date 'consumption_date', null: false
     t.integer 'quantity', null: false
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
-    t.index ['food_entries_id'], name: 'index_consumptions_on_food_entries_id'
+    t.index ['food_entry_id'], name: 'index_consumptions_on_food_entry_id'
     t.index ['user_id'], name: 'index_consumptions_on_user_id'
   end
 
@@ -53,7 +53,7 @@ ActiveRecord::Schema[7.2].define(version: 20_250_127_081_938) do
     t.index ['user_id'], name: 'index_weights_on_user_id'
   end
 
-  add_foreign_key 'consumptions', 'food_entries', column: 'food_entries_id'
+  add_foreign_key 'consumptions', 'food_entries'
   add_foreign_key 'consumptions', 'users'
   add_foreign_key 'food_entries', 'users'
   add_foreign_key 'weights', 'users'
