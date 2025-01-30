@@ -4,7 +4,9 @@ require './app'
 # Index
 get '/food_entries' do
   if logged_in?(session)
-    @food_entries = current_user(session).food_entries.order(date: :asc)
+    user_entries = current_user(session).food_entries.order(created_at: :asc)
+    public_entries = FoodEntry.where(public: true).order(created_at: :asc)
+    @food_entries = (user_entries + public_entries).uniq
     erb :'food_entries/index'
   else
     redirect '/login'
