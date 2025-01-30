@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateConsumptions < ActiveRecord::Migration[7.2]
   def change
     create_table :consumptions do |t|
@@ -5,7 +7,7 @@ class CreateConsumptions < ActiveRecord::Migration[7.2]
       t.references :food_entries, null: false, foreign_key: true
 
       t.date :consumption_date, null: false
-      t.float :quantity, null: false
+      t.integer :quantity, null: false
 
       t.timestamps
     end

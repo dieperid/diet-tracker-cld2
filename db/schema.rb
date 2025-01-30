@@ -15,7 +15,7 @@ ActiveRecord::Schema[7.2].define(version: 20_250_127_081_938) do
     t.bigint 'user_id', null: false
     t.bigint 'food_entries_id', null: false
     t.date 'consumption_date', null: false
-    t.float 'quantity', null: false
+    t.integer 'quantity', null: false
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
     t.index ['food_entries_id'], name: 'index_consumptions_on_food_entries_id'
@@ -26,7 +26,10 @@ ActiveRecord::Schema[7.2].define(version: 20_250_127_081_938) do
     t.bigint 'user_id', null: false
     t.string 'name', null: false
     t.float 'calories', null: false
-    t.date 'date', null: false
+    t.float 'carbs', null: false
+    t.float 'proteins', null: false
+    t.float 'fats', null: false
+    t.boolean 'public', default: false, null: false
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
     t.index ['user_id'], name: 'index_food_entries_on_user_id'
