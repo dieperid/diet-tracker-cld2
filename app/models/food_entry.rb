@@ -1,6 +1,7 @@
 class FoodEntry < ActiveRecord::Base
   # Relations
   belongs_to :user
+  has_many :consumptions
 
   # Validations
   validates :name, :carbs, :proteins, :fats, :public, presence: true

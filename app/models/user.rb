@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   # Relations
   has_many :weights, dependent: :destroy
   has_many :food_entries, dependent: :destroy
+  has_many :consumptions, dependent: :destroy
 
   # Validations
   validates :name, presence: true
