@@ -5,6 +5,7 @@
 <% end %>
 
 <form action="/food_entries" method="post">
-  <%= erb :'food_entries/_form', locals: { name_value: '', calories_value: 0,
-  date_value: '', button_text: 'Créer' } %>
+  <%= erb :'food_entries/_form', locals: { name_value: '', calories_value: '',
+  carbs_value: '', proteins_value: '', fats_value: '', public_value: false,
+  button_text: 'Créer' } %>
 </form>

@@ -8,6 +8,7 @@
   <input type="hidden" name="_method" value="put" />
 
   <%= erb :'food_entries/_form', locals: { name_value: @food_entry.name,
-  calories_value: @food_entry.calories, date_value: @food_entry.date,
-  button_text: 'Mettre à jour' } %>
+  calories_value: @food_entry.calories, carbs_value: @food_entry.carbs,
+  proteins_value: @food_entry.proteins, fats_value: @food_entry.fats,
+  public_value: @food_entry.public, button_text: 'Mettre à jour' } %>
 </form>
