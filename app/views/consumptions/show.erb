@@ -1,0 +1,42 @@
+<div class="max-w-lg mx-auto bg-white shadow-lg rounded-lg p-6 mt-10">
+  <h1 class="text-2xl font-bold text-gray-800 border-b pb-2 mb-4">
+    Détails de l'aliment
+  </h1>
+
+  <p class="text-gray-700"><strong>ID :</strong> <%= @consumption.id %></p>
+  <p class="text-gray-700">
+    <strong>Aliment :</strong> <%= @consumption.food_entry.name %>
+  </p>
+  <p class="text-gray-700">
+    <strong>Date de consommation :</strong> <%=
+    @consumption.consumption_date.strftime('%d/%m/%Y') %>
+  </p>
+
+  <div class="flex justify-between mt-4">
+    <a
+      href="/consumptions"
+      class="inline-block mt-4 px-6 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600"
+      >Retour à la liste</a
+    >
+    <div class="flex justify-end space-x-2">
+      <a
+        href="/consumptions/<%= @consumption.id %>/edit"
+        class="inline-block mt-4 px-6 py-2 bg-yellow-500 text-white font-semibold rounded hover:bg-yellow-600"
+        >Modifier</a
+      >
+      <form
+        action="/consumptions/<%= @consumption.id %>"
+        method="post"
+        class="inline"
+      >
+        <input type="hidden" name="_method" value="delete" />
+        <button
+          type="submit"
+          class="inline-block mt-4 px-6 py-2 bg-red-500 text-white font-semibold rounded hover:bg-red-600"
+        >
+          Supprimer
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
