@@ -1,23 +1,23 @@
 <div class="container mx-auto">
-  <h1 class="text-2xl font-bold text-gray-800 mb-4">Entrées de poids</h1>
+  <h1 class="text-2xl font-bold text-gray-800 mb-4">Entrées de masse</h1>
 
   <table
     class="table-auto w-full text-left border-collapse border border-gray-300"
   >
     <thead>
       <tr class="bg-gray-100">
-        <th class="border border-gray-300 px-4 py-2">ID</th>
-        <th class="border border-gray-300 px-4 py-2">Poids (kg)</th>
-        <th class="border border-gray-300 px-4 py-2">Date</th>
+        <th class="border border-gray-300 px-4 py-2">Masse (kg)</th>
+        <th class="border border-gray-300 px-4 py-2">Date d'entrée</th>
         <th class="border border-gray-300 px-4 py-2">Actions</th>
       </tr>
     </thead>
     <tbody>
       <% @weights.each do |weight| %>
       <tr class="hover:bg-gray-50">
-        <td class="border border-gray-300 px-4 py-2"><%= weight.id %></td>
         <td class="border border-gray-300 px-4 py-2"><%= weight.weight %></td>
-        <td class="border border-gray-300 px-4 py-2"><%= weight.date %></td>
+        <td class="border border-gray-300 px-4 py-2">
+          <%= weight.date.strftime('%d/%m/%Y') %>
+        </td>
         <td class="border border-gray-300 px-4 py-2">
           <!-- Voir -->
           <a
