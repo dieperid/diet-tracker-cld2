@@ -1,10 +1,6 @@
 require 'sinatra'
 require './app'
 
-get '/' do
-  redirect '/weights'
-end
-
 # Index
 get '/weights' do
   if logged_in?(session)

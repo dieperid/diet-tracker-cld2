@@ -28,4 +28,13 @@ configure do
   enable :sessions
 end
 
+get '/' do
+  if logged_in?(session)
+    @connected_user = current_user(session)
+    erb :home
+  else
+    redirect '/login'
+  end
+end
+
 use Auth
