@@ -4,7 +4,12 @@ require './app'
 # Index
 get '/consumptions' do
   if logged_in?(session)
-    @consumptions = current_user(session).consumptions.includes(:food_entry).order(consumption_date: :asc)
+    @consumptions = current_user(session).consumptions
+                                         .includes(:food_entry)
+                                         .order(consumption_date: :asc)
+
+    @calories_per_day = @consumptions.group(:consumption_date)
+                                     .sum('food_entries.calories * consumptions.quantity')
 
     erb :'consumptions/index'
   else
