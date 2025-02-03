@@ -4,7 +4,9 @@ require './app'
 # Index
 get '/weights' do
   if logged_in?(session)
+    @weights_hash = current_user(session).weights.order(date: :asc).pluck(:date, :weight).to_h
     @weights = current_user(session).weights.order(date: :asc)
+
     erb :'weights/index'
   else
     redirect '/login'
@@ -20,7 +22,7 @@ end
 # Store
 post '/weights' do
   weight = current_user(session).weights.new(
-    params
+    params[:weight]
   )
 
   if weight.save

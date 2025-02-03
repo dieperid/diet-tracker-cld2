@@ -12,6 +12,10 @@
       </tr>
     </thead>
     <tbody>
+      <section>
+        <%= line_chart @weights_hash, xtitle: "Date", ytitle: "Masse (kg)",
+        height: "400px" %>
+      </section>
       <% @weights.each do |weight| %>
       <tr class="hover:bg-gray-50">
         <td class="border border-gray-300 px-4 py-2"><%= weight.weight %></td>
