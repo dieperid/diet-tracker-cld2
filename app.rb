@@ -11,6 +11,7 @@ require 'sinatra'
 require 'dotenv/load'
 require 'securerandom'
 require './app/helpers/auth_helper'
+require 'chartkick'
 require "#{SERVICE_FOLDER}/db_connection"
 
 set :environment, ENV.fetch('RACK_ENV')
