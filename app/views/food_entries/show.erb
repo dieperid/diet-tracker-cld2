@@ -18,6 +18,14 @@
     <strong>Lipides :</strong> <%= @food_entry.fats %>g
   </p>
 
+  <% if @food_entry.image && !@food_entry.image.empty? %>
+  <img
+    src="<%= @food_entry.image %>"
+    alt="Image de <%= @food_entry.name %>"
+    style="max-width: 300px"
+  />
+  <% end %>
+
   <div class="flex justify-between mt-4">
     <a
       href="/food_entries"
