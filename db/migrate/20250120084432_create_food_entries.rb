@@ -11,7 +11,7 @@ class CreateFoodEntries < ActiveRecord::Migration[7.2]
       t.float :proteins, null: false
       t.float :fats, null: false
       t.boolean :public, null: false, default: false
-      t.string :image, null: false
+      t.text :image, null: false
 
       t.timestamps
     end
