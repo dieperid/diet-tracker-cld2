@@ -21,6 +21,20 @@ end
 
 # Store
 post '/food_entries' do
+  if params[:food_entry][:image] && params[:food_entry][:image][:tempfile]
+    begin
+      # File upload on Cloudinary
+      upload = Cloudinary::Uploader.upload(params[:food_entry][:image][:tempfile], folder: 'food_entries')
+
+      # Add the image URL from Cloudinary in params
+      params[:food_entry][:image] = upload['secure_url']
+    rescue StandardError => e
+      return "Erreur d'upload Cloudinary : #{e.message}"
+    end
+  else
+    params[:food_entry].delete(:image)
+  end
+
   food_entry = current_user(session).food_entries.new(
     params[:food_entry]
   )
@@ -28,7 +42,7 @@ post '/food_entries' do
   if food_entry.save
     redirect '/food_entries'
   else
-    @error = "Erreur lors de l'enregistrement de l'aliment."
+    @error = "Erreur lors de l'enregistrement de l'aliment : #{food_entry.errors.full_messages.join(', ')}"
     erb :'food_entries/new'
   end
 end
@@ -47,10 +61,26 @@ end
 
 # Update
 put '/food_entries/:id' do
+  if params[:food_entry][:image] && params[:food_entry][:image][:tempfile]
+    begin
+      # File upload on Cloudinary
+      upload = Cloudinary::Uploader.upload(params[:food_entry][:image][:tempfile], folder: 'food_entries')
+
+      # Add the image URL from Cloudinary in params
+      params[:food_entry][:image] = upload['secure_url']
+    rescue StandardError => e
+      return "Erreur d'upload Cloudinary : #{e.message}"
+    end
+  else
+    params[:food_entry].delete(:image)
+  end
+
   @food_entry = FoodEntry.find(params[:id])
+
   if @food_entry.update(params[:food_entry])
     redirect "/food_entries/#{@food_entry.id}"
   else
+    @error = "Erreur lors de la modification de l'aliment : #{@food_entry.errors.full_messages.join(', ')}"
     erb :'food_entries/edit'
   end
 end
