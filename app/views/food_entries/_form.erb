@@ -5,7 +5,7 @@
       type="text"
       name="food_entry[name]"
       id="name"
-      value="<%= name_value %>"
+      value="<%= name %>"
       required
       class="w-80 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
     />
@@ -20,7 +20,7 @@
       name="food_entry[calories]"
       id="calories"
       step="0.1"
-      value="<%= calories_value %>"
+      value="<%= calories %>"
       required
       class="w-80 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
     />
@@ -35,7 +35,7 @@
       name="food_entry[carbs]"
       id="carbs"
       step="0.1"
-      value="<%= carbs_value %>"
+      value="<%= carbs %>"
       required
       class="w-80 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
     />
@@ -50,7 +50,7 @@
       name="food_entry[proteins]"
       id="proteins"
       step="0.1"
-      value="<%= proteins_value %>"
+      value="<%= proteins %>"
       required
       class="w-80 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
     />
@@ -65,7 +65,7 @@
       name="food_entry[fats]"
       id="fats"
       step="0.1"
-      value="<%= fats_value %>"
+      value="<%= fats %>"
       required
       class="w-80 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
     />
@@ -73,9 +73,25 @@
 
   <section>
     <label for="public" class="block text-gray-700 font-medium">Public :</label>
-    <input type="checkbox" name="food_entry[public]" id="public" <%=
-    public_value ? 'checked' : '' %> class="h-5 w-5 text-blue-500
-    border-gray-300 rounded focus:ring-blue-500" />
+
+    <input type="hidden" id="public" name="food_entry[public]" value="false" />
+
+    <input type="checkbox" id="public" name="food_entry[public]" value="true"
+    <%= public ? 'checked' : '' %> class="h-5 w-5 text-blue-500 border-gray-300
+    rounded focus:ring-blue-500" />
+  </section>
+
+  <section>
+    <label for="image" class="block text-gray-700 font-medium">Image :</label>
+    <input
+      type="file"
+      name="food_entry[image]"
+      id="image"
+      required
+      value="<%= image %>"
+      class="w-80 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+      accept="image/*"
+    />
   </section>
 </div>
 

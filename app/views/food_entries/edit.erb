@@ -4,11 +4,15 @@
 <p style="color: red"><%= @error %></p>
 <% end %>
 
-<form action="/food_entries/<%= @food_entry.id %>" method="post">
+<form
+  action="/food_entries/<%= @food_entry.id %>"
+  method="post"
+  enctype="multipart/form-data"
+>
   <input type="hidden" name="_method" value="put" />
 
-  <%= erb :'food_entries/_form', locals: { name_value: @food_entry.name,
-  calories_value: @food_entry.calories, carbs_value: @food_entry.carbs,
-  proteins_value: @food_entry.proteins, fats_value: @food_entry.fats,
-  public_value: @food_entry.public, button_text: 'Mettre à jour' } %>
+  <%= erb :'food_entries/_form', locals: { name: @food_entry.name, calories:
+  @food_entry.calories, carbs: @food_entry.carbs, proteins:
+  @food_entry.proteins, fats: @food_entry.fats, public: @food_entry.public,
+  image: '', button_text: 'Mettre à jour' } %>
 </form>

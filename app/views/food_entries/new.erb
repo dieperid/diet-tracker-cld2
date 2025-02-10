@@ -4,8 +4,7 @@
 <p style="color: red"><%= @error %></p>
 <% end %>
 
-<form action="/food_entries" method="post">
-  <%= erb :'food_entries/_form', locals: { name_value: '', calories_value: '',
-  carbs_value: '', proteins_value: '', fats_value: '', public_value: false,
-  button_text: 'Créer' } %>
+<form action="/food_entries" method="post" enctype="multipart/form-data">
+  <%= erb :'food_entries/_form', locals: { name: '', calories: '', carbs: '',
+  proteins: '', fats: '', public: false, image: nil, button_text: 'Créer' } %>
 </form>
