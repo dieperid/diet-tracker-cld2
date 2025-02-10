@@ -30,6 +30,7 @@ ActiveRecord::Schema[7.2].define(version: 20_250_127_081_938) do
     t.float 'proteins', null: false
     t.float 'fats', null: false
     t.boolean 'public', default: false, null: false
+    t.text 'image', null: false
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
     t.index ['user_id'], name: 'index_food_entries_on_user_id'

@@ -28,7 +28,8 @@ users.each do |user|
       carbs: rand(10..100),
       proteins: rand(5..50),
       fats: rand(5..50),
-      public: true
+      public: true,
+      image: 'https://asset.cloudinary.com/dre8cgqlb/a5ecdbf8191b5a5994456c1bba8dd32f'
     )
   end
 
