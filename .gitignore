@@ -184,6 +184,7 @@ build-iPhoneSimulator/
 database.yml
 .env
 /logs/*.log
+ca.pem
 
 #Mac
 .DS_Store

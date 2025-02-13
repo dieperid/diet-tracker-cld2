@@ -11,7 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.2].define(version: 20_250_127_081_938) do
-  create_table 'consumptions', charset: 'utf8mb4', collation: 'utf8mb4_general_ci', force: :cascade do |t|
+  create_table 'consumptions', force: :cascade do |t|
     t.bigint 'user_id', null: false
     t.bigint 'food_entry_id', null: false
     t.date 'consumption_date', null: false
@@ -22,7 +22,7 @@ ActiveRecord::Schema[7.2].define(version: 20_250_127_081_938) do
     t.index ['user_id'], name: 'index_consumptions_on_user_id'
   end
 
-  create_table 'food_entries', charset: 'utf8mb4', collation: 'utf8mb4_general_ci', force: :cascade do |t|
+  create_table 'food_entries', force: :cascade do |t|
     t.bigint 'user_id', null: false
     t.string 'name', null: false
     t.float 'calories', null: false
@@ -36,7 +36,7 @@ ActiveRecord::Schema[7.2].define(version: 20_250_127_081_938) do
     t.index ['user_id'], name: 'index_food_entries_on_user_id'
   end
 
-  create_table 'users', charset: 'utf8mb4', collation: 'utf8mb4_general_ci', force: :cascade do |t|
+  create_table 'users', force: :cascade do |t|
     t.string 'name', null: false
     t.string 'email', null: false
     t.string 'password_digest', null: false
@@ -45,7 +45,7 @@ ActiveRecord::Schema[7.2].define(version: 20_250_127_081_938) do
     t.index ['email'], name: 'index_users_on_email', unique: true
   end
 
-  create_table 'weights', charset: 'utf8mb4', collation: 'utf8mb4_general_ci', force: :cascade do |t|
+  create_table 'weights', force: :cascade do |t|
     t.bigint 'user_id', null: false
     t.float 'weight', null: false
     t.date 'date', null: false
