@@ -27,7 +27,7 @@ Listez toutes les dépendances et leur version nécessaires au projet en tant qu
 
 Pour Git Flow, cela dépend du système d'exploitation que vous utilisez. Si vous utilisez Windows, tout va bien, il est déjà installé avec git. Pour les autres, [suivre ce tutoriel](https://skoch.github.io/Git-Workflow/).
 
-Dans ce projet, nous avons utilisé Visual Studio Code comme IDE principal.
+Dans ce projet, j'ai utilisé Visual Studio Code comme IDE principal.
 
 ## Déploiement
 
@@ -36,7 +36,7 @@ Dans ce projet, nous avons utilisé Visual Studio Code comme IDE principal.
 1. Cloner le dépôt git
 
 ```bash
-git clone https://github.com/CPNV-ES/nos1_ddj.git
+git clone https://github.com/dieperid/diet-tracker-cld2.git
 cd diet-tracker-cld2
 ```
 
@@ -92,6 +92,12 @@ bundle install
    bundle exec rake db:migrate
    ```
 
+   2. Seed la base de données
+
+   ```bash
+   bundle exec rake db:seed
+   ```
+
 7. Lancer le serveur Ruby
 
 ```bash
@@ -112,26 +118,24 @@ ruby app.rb
 ./nos1_ddj
 ├── app
 │   ├── controllers                     # Controllers
-│   │   └── users_controller.rb
+│   ├── helpers                         # Controllers
 │   ├── middlewares                     # Middlewares
-│   │   └── auth.rb
 │   ├── models                          # Models
-│   │   └── user.rb
 │   ├── services                        # Services
-│   │   └── db_connection.rb
 │   └── views                           # Views
-│       ├── documents
+│       ├── consumptions
+│       ├── food_entries
 │       ├── login
 │       ├── register
-│       └── layout.erb
+│       └── weights
 ├── app.rb                              # Point d'entrée de l'application
 ├── config                              # Configuration
 │   ├── database.example.yml
-│   ├── irb.rb
-│   └── logger.yml
-├── database                            # Database
+│   └── irb.rb
+├── db                                  # Database
 │   ├── migrate                         # Migration
-│   └── schema.rb
+│   ├── schema.rb
+│   └── seeds.rb
 ├── docs                                # Documentation
 │   └── database.md
 ├── logs                                # Logs
@@ -140,7 +144,8 @@ ruby app.rb
 ├── Gemfile.lock
 ├── LICENSE
 ├── Rakefile
-└── README.md
+├── README.md
+└── render-build.sh
 ```
 
 ## Collaborer
