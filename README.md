@@ -11,7 +11,7 @@ Ce projet consiste à crée une application ruby avec sinatra pour faire du trac
 Listez toutes les dépendances et leur version nécessaires au projet en tant que :
 
 - OS supportées :
-  - [Debian 11 (bullseye)](https://www.debian.org/releases/bullseye/debian-installer/index)
+  - [Debian 12 (bookworm)](https://www.debian.org/distrib/)
 - Langage :
   - [Ruby (3.1.2)](https://www.ruby-lang.org/en/documentation/installation/)
 - Extensions :
@@ -106,16 +106,10 @@ ruby app.rb
 
 > http://127.0.0.1:4567/
 
-#### Comment exécuter les tests ?
-
-```bash
-# aucun test actuellement
-```
-
 ## Structure des répertoires
 
 ```bash
-./nos1_ddj
+./diet-tracker-cld2
 ├── app
 │   ├── controllers                     # Controllers
 │   ├── helpers                         # Controllers
@@ -153,8 +147,8 @@ ruby app.rb
 - Prenez le temps de lire le readme et de trouver la façon dont vous souhaitez aider les autres développeurs à collaborer avec vous.
 
 - Ils ont besoin de savoir :
-  - [Comment proposer une nouvelle fonctionnalité (issue, pull request)](https://github.com/CPNV-ES/nos1_ddj/issues)
-  - [Comment écrire du code](https://www.php-fig.org/psr/psr-12/)
+  - [Comment proposer une nouvelle fonctionnalité (issue, pull request)](https://github.com/dieperid/diet-tracker-cld2/issues)
+  - [Comment écrire du code](https://github.com/rubocop/ruby-style-guide)
   - [Comment commit](https://www.conventionalcommits.org/en/v1.0.0/)
   - [Comment utiliser votre workflow - GitFlow](https://nvie.com/posts/a-successful-git-branching-model/)
 
